@@ -1,0 +1,49 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyMissingProjectTag",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "Null": {
+          "aws:RequestTag/Project": "true"
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingEnvironmentTag",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "Null": {
+          "aws:RequestTag/Environment": "true"
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingOwnerTag",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "Null": {
+          "aws:RequestTag/Owner": "true"
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingCostCenterTag",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "Null": {
+          "aws:RequestTag/CostCenter": "true"
+        }
+      }
+    }
+  ]
+}
